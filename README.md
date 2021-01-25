@@ -1,4 +1,15 @@
-# Title
+# Wiki
 
-[Lien vers tri](tri.md)
-[Lien vers linux](linux.md)
+## Linux
+
+[Commandes](linux/commands.md)
+[Bash](linux/bash.md)
+[Users](linux/users.md)
+
+## Tris
+
+[NAS](sorting/nas.md)
+
+## Programmes
+
+[programs](programs/vscode.md)
