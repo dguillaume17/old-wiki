@@ -1,6 +1,6 @@
 # Linux | Bash
 
-### Première ligne (shebang)
+## Première ligne (shebang)
 
 Définir que le script doit s'exécuter avec sh ou un shell compatible
 
@@ -8,24 +8,101 @@ Définir que le script doit s'exécuter avec sh ou un shell compatible
 #!/bin/sh
 ```
 
+### Paramètres
 
-### Condition
-
->if
-
-Exemple (plusieurs lignes)
+Syntaxe :
 
 ```bash
-nom="Bruno"
+$[n]
+```
 
-if [ $nom = "Bruno" ]
+Paramètres :
+>[n] = numéro du paramètre
+
+Exemple
+
+```bash
+echo $1
+echo $2
+```
+
+### Variables
+
+#### Affectation
+
+Syntaxe :
+
+```bash
+[variable]=[valeur]
+```
+
+Paramètres :
+>[variable] = nom de la variable
+[valeur] = valeur à affecter
+
+Exemple
+
+```bash
+toto="toto"
+tata=1
+tutu=false
+```
+
+#### Utilisation
+### Conditions
+
+#### IF
+
+Syntaxe :
+
+```bash
+if [ [condition] ]
 then
-    echo "Salut Bruno !"
+    [...]
 fi
 ```
 
-Exemple (une ligne)
+Exemple
 
 ```bash
-nom="Bruno"; if [ $nom = "Bruno" ]; then echo "Salut Bruno"; fi
+nom="Bruno"
+if [ $nom = "Bruno" ]
+then
+    echo "Salut Bruno"
+fi
+
+condition=true
+if [ "$condition" = true ]
+then
+    echo "Condition vraie"
+fi
 ```
+
+#### ELSE
+
+Syntaxe :
+
+```bash
+if [ [condition] ]
+then
+    [...]
+else
+    [...]
+fi
+```
+
+#### ELSE IF
+
+Syntaxe :
+
+```bash
+if [ [condition1] ]
+then
+    [...]
+elif [ [condition2] ]
+    [...]
+else
+    [...]
+fi
+```
+
