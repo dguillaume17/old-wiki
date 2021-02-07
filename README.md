@@ -3,14 +3,21 @@
 ## Linux
 
 [Terminal](linux/terminal.md)
+
 [Commandes](linux/commands.md)
+
 [Bash](linux/bash.md)
+
 [Users](linux/users.md)
 
-## Tris
+## DEV
 
-[NAS](sorting/nas.md)
+[RxJS](dev/rxjs.md)
 
 ## Programmes
 
 [programs](programs/vscode.md)
+
+## NAS
+
+[Photos / Vidéos](nas/photos.md)
