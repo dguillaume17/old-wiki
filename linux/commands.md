@@ -90,9 +90,13 @@ less /etc/passwd | awk -F: '{print $1}'
 
 ## Systèmes de fichier
 
-### `pwd`
+### `df`
 
-Imprimer le chemin du répertoire en cours
+Lister les partitions et les espaces disques
+
+Paramètres :
+
+* `-h` = afficher les tailles en notation ingénieur
 
 ### `ls`
 
@@ -114,5 +118,9 @@ Exemple :
 ```bash
 ls -la
 ```
+
+### `pwd`
+
+Imprimer le chemin du répertoire en cours
 
 ## Utilisateurs
