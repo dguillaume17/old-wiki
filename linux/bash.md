@@ -1,46 +1,36 @@
 # Linux | Bash
 
-## Première ligne (shebang)
+## Shebang
 
 Définir que le script doit s'exécuter avec sh ou un shell compatible
 
 ```bash
 #!/bin/sh
+...
 ```
 
-### Paramètres
-
-Syntaxe :
-
-```bash
-$[n]
-```
-
-Paramètres :
->[n] = numéro du paramètre
+## Paramètres
 
 Exemple
 
-```bash
-echo $1
-echo $2
-```
-
-### Variables
-
-#### Affectation
-
-Syntaxe :
+* Commande
 
 ```bash
-[variable]=[valeur]
+sh ./script.sh param1 param2
 ```
 
-Paramètres :
->[variable] = nom de la variable
-[valeur] = valeur à affecter
+* Fichier `script.sh`
 
-Exemple
+```bash
+echo $1 #print "param1"
+echo $2 #print "param2"
+```
+
+## Variables
+
+Exemples :
+
+* Affectation
 
 ```bash
 toto="toto"
@@ -48,29 +38,24 @@ tata=1
 tutu=false
 ```
 
-#### Utilisation
-### Conditions
+## Conditions
 
-#### IF
+Exemples :
 
-Syntaxe :
+* `IF...` avec `string`
 
 ```bash
-if [ [condition] ]
+nom="Toto"
+
+if [ $nom = "Toto" ]
 then
-    [...]
+    echo "Salut Toto"
 fi
 ```
 
-Exemple
+* `IF...` avec `bool`
 
 ```bash
-nom="Bruno"
-if [ $nom = "Bruno" ]
-then
-    echo "Salut Bruno"
-fi
-
 condition=true
 if [ "$condition" = true ]
 then
@@ -78,31 +63,28 @@ then
 fi
 ```
 
-#### ELSE
-
-Syntaxe :
+* `IF...ELSE...`
 
 ```bash
-if [ [condition] ]
+nom="Toto"
+if [ $nom = "Toto" ]
 then
-    [...]
+    echo "Salut Toto"
 else
-    [...]
+    echo "Salut !"
 fi
 ```
 
-#### ELSE IF
-
-Syntaxe :
+* `IF...ELSEIF...ELSE...`
 
 ```bash
-if [ [condition1] ]
+nom="Toto"
+if [ $nom = "Toto" ]
 then
-    [...]
-elif [ [condition2] ]
-    [...]
+    echo "Salut Toto"
+elif [ $nom = "Tata" ]
+    echo "Salut Tata"
 else
-    [...]
+    echo "Salut !"
 fi
 ```
-
