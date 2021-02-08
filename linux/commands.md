@@ -1,6 +1,6 @@
 # Linux | Commandes
 
-## Fichiers textes
+## Textes
 
 ### `less`
 
@@ -88,6 +88,35 @@ Exemple:
 less /etc/passwd | awk -F: '{print $1}'
 ```
 
+## Remots
+
+### `scp``
+
+Copier un fichier d'un serveur ssh vers un autre
+
+Syntaxe :
+
+```bash
+scp <file_path> <destination_path>
+```
+
+Exemple :
+
+```bash
+scp gder@192.168.0.70:/home/gder/tmp/test.txt /Users/gder/temp
+scp /Users/gder/temp/test.txt gder@192.168.0.70:/home/gder/tmp/test2.txt
+```
+
+### `ssh`
+
+Se connecter sur un serveur ssh
+
+Exemple :
+
+```bash
+ssh gder@192.168.0.70
+```
+
 ## Systèmes de fichier
 
 ### `df`
@@ -124,3 +153,95 @@ ls -la
 Imprimer le chemin du répertoire en cours
 
 ## Utilisateurs
+
+### `addgroup`
+
+Créer un groupe d'utilisateurs (Cfr. fichier `/etc/group`)
+
+Exemple :
+
+```bash
+sudo addgroup easi
+```
+
+### `adduser`
+
+#### Mode création
+
+Créer un utilisateur (Cfr. fichier `/etc/passwd`)
+
+Exemple :
+
+```bash
+sudo adduser toto
+```
+
+### Mode affectation groupe
+
+Ajouter un groupe à un utilisateur
+
+Exemple :
+
+```bash
+sudo adduser toto easi
+```
+
+### `delgroup`
+
+Supprimer un groupe et supprimer toutes ses dépendances
+
+### `deluser`
+
+Supprimer un utilisateur
+
+Paramètres :
+
+* `--remove-home` = Supprimer l'utilisateur et son répertoire `/home`
+* `--force`= Supprimer l'utilisateur même s'il est connecté
+
+### `passwd`
+
+Changer le mot de passer d'un utilisateur
+
+Paramètres :
+
+* `<user_name>` = nom de l'utilisateur pour lequel modifier le mot de passe  
+  * utilisateur en cours si vide
+  * aucune password policy si exécuté en root
+* `-e` = forcer le changement de mot de passe à la prochaine connexion (`<user_name>` et `sudo` sont obligatoires)
+
+Exemples :
+
+* Changer le mot de passe de l'utilisateur en cours (sans password policy)
+
+```bash
+sudo passwd
+```
+
+* Changer le mot de passe de toto (avec password policy)
+
+```bash
+passwd toto
+```
+
+* Forcer le changement de mot de passe à la prochaine connexion de toto
+
+```bash
+passwd -e toto
+```
+
+### `usermod``
+
+Modifier un utilisateur
+
+Paramètre :
+
+* `-G` = supprimer tous les groupes d'un utilisateur et définir celui ou ceux passé(s) en paramètre (séparés par `,`)
+
+Exemple :
+
+* Définir un groupe
+
+```bash
+sudo usermod toto -G easi,house
+```
