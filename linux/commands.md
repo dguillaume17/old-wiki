@@ -30,10 +30,14 @@ Paramètres
 
 Imprimer les x dernières lignes d'un fichier texte
 
-Paramètres
+Paramètres :
 
 * `-%count%` = nombre de lignes à afficher (10 par défaut)
 * `-f` = afficher les dernières lignes en temps réel (utile pour suivre l'évolution des fichiers de log)
+
+Raccourcis :
+
+* Créer des lignes vides en mode follow (`-f`) : `enter`
 
 ## Permissions
 
@@ -88,23 +92,52 @@ Exemple:
 less /etc/passwd | awk -F: '{print $1}'
 ```
 
-## Remots
+### `sed`
 
-### `scp``
+#### Mode substitution
 
-Copier un fichier d'un serveur ssh vers un autre
+Remplacer une chaîne dans un fichier texte
 
 Syntaxe :
 
 ```bash
-scp <file_path> <destination_path>
+sed -i 's/<regular_expression>/<new_text>/<regex_flag>' file.txt
 ```
+
+Paramètre :
+
+* `-i` = sauvegarder le résultat dans le fichier d'origine
+
+Exemple:
+
+```bash
+sed -i 's/original/new/g' file.txt
+```
+
+## Remote
+
+### `scp`
+
+Copier un fichier d'un serveur ssh vers un autre
 
 Exemple :
 
+* D'un serveur vers le poste local
+
 ```bash
-scp gder@192.168.0.70:/home/gder/tmp/test.txt /Users/gder/temp
-scp /Users/gder/temp/test.txt gder@192.168.0.70:/home/gder/tmp/test2.txt
+scp gder@192.168.0.70:/home/gder/temp/test.txt /home/toto/temp/test2.txt
+```
+
+* Du poste local vers un serveur
+
+```bash
+scp /home/toto/temp/test.txt gder@192.168.0.70:/home/gder/temp/test2.txt
+```
+
+* D'un serveur vers un autre serveur
+
+```bash
+scp toto@192.168.0.60:/home/toto/temp/test.txt gder@192.168.0.70:/home/gder/temp/test2.txt
 ```
 
 ### `ssh`
@@ -230,7 +263,7 @@ passwd toto
 passwd -e toto
 ```
 
-### `usermod``
+### `usermod`
 
 Modifier un utilisateur
 
