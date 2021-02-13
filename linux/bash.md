@@ -9,6 +9,35 @@ Définir que le script doit s'exécuter avec sh ou un shell compatible
 ...
 ```
 
+## Bonnes pratiques
+
+Exemple :
+
+```bash
+print_start_message() {
+    echo "BEGIN"
+}
+
+print_end_message() {
+    echo "END"
+}
+
+backup_files() {
+    cp $file_to_backup $file_destination
+}
+
+main() {
+    file_to_backup="test1.txt"
+    file_destination="test1.txt"
+    
+    print_start_message
+    backup_files
+    print_end_message
+}
+
+main
+```
+
 ## Paramètres
 
 Exemple
@@ -28,6 +57,10 @@ echo $2 #print "param2"
 
 ## Variables
 
+Recommandation :
+
+* Toujours concaténer les variables de cette manière afin d'éviter des erreurs de logiques : `"${variable1} ${variable2}"`
+
 Exemples :
 
 * Affectation
@@ -40,6 +73,10 @@ tutu=false
 
 ## Conditions
 
+Recommandation :
+
+* Toujours utiliser des doubles `[[ ]]` afin d'éviter des erreurs de logiques
+
 Exemples :
 
 * `IF...` avec `string`
@@ -47,8 +84,7 @@ Exemples :
 ```bash
 nom="Toto"
 
-if [ $nom = "Toto" ]
-then
+if [[ $nom = "Toto" ]] ; then
     echo "Salut Toto"
 fi
 ```
@@ -57,8 +93,7 @@ fi
 
 ```bash
 condition=true
-if [ "$condition" = true ]
-then
+if [[ "$condition" = true ]] ; then
     echo "Condition vraie"
 fi
 ```
@@ -67,8 +102,7 @@ fi
 
 ```bash
 nom="Toto"
-if [ $nom = "Toto" ]
-then
+if [[ $nom = "Toto" ]] ; then
     echo "Salut Toto"
 else
     echo "Salut !"
@@ -79,12 +113,35 @@ fi
 
 ```bash
 nom="Toto"
-if [ $nom = "Toto" ]
-then
+if [[ $nom = "Toto" ]] ; then
     echo "Salut Toto"
-elif [ $nom = "Tata" ]
+elif [[ $nom = "Tata" ]]
     echo "Salut Tata"
 else
     echo "Salut !"
+fi
+```
+
+* Tester si une variable est affectée
+
+```bash
+if [[ -n $variable ]] ; then
+    echo "Variable non vide"
+fi
+```
+
+* Tester si fichier existe
+
+```bash
+if [[ -f config.ini ]] ; then
+   echo "config.ini existe"
+fi
+```
+
+* Tester si une commnde retourne une erreur
+
+```bash
+if ! grep "OUI" config.ini ; then
+    echo "Le fichier n'existe pas ou ne contient pas 'OUI'"
 fi
 ```

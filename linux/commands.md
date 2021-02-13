@@ -2,6 +2,19 @@
 
 ## Textes
 
+### `cat`
+
+Imprimer le fichier d'un fichier texte
+
+Paramètres :
+
+* `-n` | `--number` = afficher le numéro de lignes
+* `-b` | `--number-nonblank` = afficher le numéro des lignes non vides
+
+### `echo`
+
+Imprimer le contenu passé en paramètre
+
 ### `less`
 
 Visualiser le contenu d'un fichier texte et naviguer
@@ -35,6 +48,14 @@ Paramètres
 
 * `-%count%` = nombre de lignes à afficher (10 par défaut)
 
+### `sort`
+
+Trier les lignes par ordre alphabétique
+
+Paramètres :
+
+* `-r` | `--reverse` = nombre de lignes à afficher (10 par défaut)
+
 ### `tail`
 
 Imprimer les x dernières lignes d'un fichier texte
@@ -47,6 +68,27 @@ Paramètres :
 Raccourcis :
 
 * Créer des lignes vides en mode follow (`-f`) : `enter`
+
+### `uniq`
+
+Gérer les lignes identiques consécutives
+
+Paramètres :
+
+* `-c` | `--count` : pour chaque ligne, compter le nombre d'occurrences
+* `-i` | `--ignore-case` : ignorer la casse pour comparer les lignes
+* `-u` | `--unique` : lister uniquement les lignes uniques
+* `-d` | `--repeated` : lister uniquement les lignes dupliquées
+
+### `wc`
+
+Compter le nombre de lignes, de mots et de caractères d'un fichier
+
+Paramètres :
+
+* `-l` | `--lines` : nombre le lignes
+* `-w` | `--words` : nombre de mots
+* `-c` | `--chars` : nombre de caractères
 
 ## Permissions
 
@@ -108,6 +150,10 @@ Exemple :
 ps -aux
 ```
 
+### `sleep`
+
+Faire une pause (mesurée en secondes)
+
 ## Programmes
 
 ### `watch`
@@ -162,7 +208,7 @@ Imprimer les lignes correspondant à un motif donné
 Paramètres :
 
 * `-c` = compter le nombre d'occurrences
-* `-v` = ne pas interpréter le motif
+* `-v` | `--invert-match` = ne pas interpréter le motif
 * `-G` = interpréter   le   motif   comme  une  expression  rationnelle  simple (comportement par défaut)
 * `-E` = interpréter  le  motif  comme  une  expression  rationnelle étendue
 * `-P` = interpréter le motif comme une expression rationnelle Perl
@@ -338,15 +384,27 @@ du <folder-path>
 du <folder-path> -a
 ```
 
+### find
+
+Recherche de fichiers ou de répertoires
+
+Paramètres :
+
+* `-maxdepth <depth>` = profondeur max des sous répertoires
+* `-type d` = uniquement les répertoires
+* `-type f` = uniquement les fichiers
+
 ### `ls`
 
-Lister le contenu d'un répertoire
+Lister le contenu d'un ou plusieurs répertoires
 
 Paramètres :
 
 * `-l` = mode liste
 * `-a` = voir les contenus cachés
 * `-F` = voir un astérix après le nom de chaque fichier exécutable
+* `-h` | `--human-readable` = afficher les tailles en notation ingénieur (uniquement en mode liste)
+* `-d` | `--directory` = imprimer les informations du répertoire passé en paramètre
 
 Alias :
 
@@ -355,8 +413,17 @@ Alias :
 
 Exemple :
 
+* Imprimer les infos des répertoires `/var` et `/mount`
+
 ```bash
-ls -la
+ls -ld /var /mnt
+```
+
+* Lister les répertoires de `/var`
+
+```bash
+ls -ld /var/*/
+ls -l /var | grep "^d"
 ```
 
 ### `lsof`
@@ -378,9 +445,27 @@ Remarque :
 
 * chaque paramètre est une condition séparée par un `OU`
 
+### `mkdir`
+
+Créer un répertoire
+
+Paramètres :
+
+* `-p` | `--parents` = ne pas retourner d'erreur si le répertoire existe déjà et créer les sous-répertoires parents si besoins
+
 ### `pwd`
 
 Imprimer le chemin du répertoire en cours
+
+### `rm`
+
+Supprimer des fichiers ou des répertoires
+
+Paramètres :
+
+* `-f` | `--force` = ne pas retourner d'erreur si le fichier ou le répertoire n'existe pas
+* `-r` | `--recursive` = supprimer un répertoire et son contenu
+* `-d` | `--dir` = supprimer un répertoire vide
 
 ## Réseau
 
