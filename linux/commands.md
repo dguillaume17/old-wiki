@@ -48,6 +48,14 @@ Paramètres
 
 * `-%count%` = nombre de lignes à afficher (10 par défaut)
 
+### `nano`
+
+Editeur de texte simple
+
+Raccourcis :
+
+* `^<t>` = `CTRL` + la touche du clavier `<t>`
+
 ### `sort`
 
 Trier les lignes par ordre alphabétique
@@ -80,6 +88,37 @@ Paramètres :
 * `-u` | `--unique` : lister uniquement les lignes uniques
 * `-d` | `--repeated` : lister uniquement les lignes dupliquées
 
+### `vim`
+
+Editeur de texte avancé
+
+Aide :
+
+* `vimtutor` : démarrer un tuto en anglais
+* `vimtutor fr` : démarrer un tuto en français
+
+Raccourcis :
+
+* Mode `Normal`
+  * Activer dans ce mode : `echap`
+  * Action
+    * `k`/ `j` : Se déplacer en haut / en bas
+    * `h`/ `l` : Se déplacer à gauche / à droite
+    * `x` : effacer le caractère qui se trouve sous le curseur
+    * `w` / `b` (back) : se déplacer de mot en mot vers la droite / vers la gauche en plaçant sur curseur sur la première lettre du mot de destination
+    * `$` : se déplacer à la fin de la ligne
+    * `u` (undo) / `CTRL + R` : revenir en arrière (équivalent du CTRL Z) / revenir en avant (équivalent du CTRL Y)
+  * Action en chaîne
+    * `<n><a>` = répéter `n` fois l'action `a` (ex: `2w`)
+  * Commandes
+    * `:q` (quit) : quitter (ne fonctionne pas si fichier modifié)
+    * `:q!` (quit!) : quitter sans sauvegarder
+    * `:w` (write) : enregistrer
+    * `:wq` (write & quit) : enregistrer et quitter
+    * `CTRL + G` : afficher en bas de l'écran la position du curseur dans le fichier
+* Mode `Insertion`
+  * Activer dans ce mode `Insertion` : `i`
+
 ### `wc`
 
 Compter le nombre de lignes, de mots et de caractères d'un fichier
@@ -96,10 +135,35 @@ Paramètres :
 
 Modifier les droits d'un répertoire
 
-Exemple :
+Paramètres :
+
+* Général
+  * `-R` : affecte les droits de manière récursive sur le répertoire, sur ses fichiers, ses sous-répertoires, etc.)
+  * `777`: activer les droits max
+* Utilisateur associé
+  * `u+<d>` : activer les droits `<d>` pour l'utilisateur associé
+  * `u-<d>` : désactiver les droits `<d>` pour l'utilisateur associé
+  * `u+<d1>-<d2>` : activer les droits `<d1>` et désactiver les droits `<d2>` pour l'utilisateur associé
+* Group associé
+  * `g+<d>` : activer les droits `<d>` pour le groupe associé
+  * `g-<d>` : désactiver les droits `<d>` pour le groupe associé
+  * `g+<d1>-<d2>` : activer les droits `<d1>` et désactiver les droits `<d2>` pour le groupe associé
+* Les autres
+  * `o+<d>` : activer les droits `<d>` pour les autres
+  * `o-<d>` : désactiver les droits `<d>` pour les autres
+  * `o+<d1>-<d2>` : activer les droits `<d1>` et désactiver les droits `<d2>` pour les autres
+* Tout le monde
+  * `a+<d>` : activer les droits `<d>` pour tout le monde
+  * `a-<d>` : désactiver les droits `<d>` pour tout le monde
+  * `a+<d1>-<d2>` : activer les droits `<d1>` et désactiver les droits `<d2>` pour tout le monde
+
+Exemples :
 
 ```bash
 chmod 777 .
+chmod +w test.txt 
+chmod u+w test.txt
+chmod u+w,g+w test.txt
 ```
 
 ### `chown`
@@ -405,6 +469,27 @@ Paramètres :
 * `-F` = voir un astérix après le nom de chaque fichier exécutable
 * `-h` | `--human-readable` = afficher les tailles en notation ingénieur (uniquement en mode liste)
 * `-d` | `--directory` = imprimer les informations du répertoire passé en paramètre
+
+Résultat :
+
+* En mode liste, les droits d'accès sont affichés dans la colonne 1 en utilisant 10 symboles
+  * Symbole 1
+    * `-` : fichier classique
+    * `d` : répertoire
+    * `l` : lien symbolique
+    * `c` : périphérique de type caractère
+    * `b` : périphérique de type bloc
+    * `p` : pipe
+    * `s` : socket
+  * Symboles 2 & 5 & 8 : droits de lectures respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
+    * `-` : droit de lecture désactivé
+    * `r` : droit de lecture activé
+  * Symboles 3 & 6 & 9 : droits d'écriture respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
+    * `-` : droit d'écriture désactivé
+    * `w` : droit d'écriture activé
+  * Symboles 4 & 7 & 10 : droits d'exécution respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
+    * `-` : droit d'exécution désactivé
+    * `x` : droit d'exécution activé
 
 Alias :
 
