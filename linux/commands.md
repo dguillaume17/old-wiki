@@ -102,22 +102,37 @@ Raccourcis :
 * Mode `Normal`
   * Activer dans ce mode : `echap`
   * Action
-    * `k`/ `j` : Se déplacer en haut / en bas
+    * `k`/ (`j` | `enter`) : Se déplacer en haut / en bas
     * `h`/ `l` : Se déplacer à gauche / à droite
-    * `x` : effacer le caractère qui se trouve sous le curseur
-    * `w` / `b` (back) : se déplacer de mot en mot vers la droite / vers la gauche en plaçant sur curseur sur la première lettre du mot de destination
-    * `$` : se déplacer à la fin de la ligne
-    * `u` (undo) / `CTRL + R` : revenir en arrière (équivalent du CTRL Z) / revenir en avant (équivalent du CTRL Y)
+    * `x` : Effacer le caractère qui se trouve sous le curseur
+    * `w` / `b` (word / back) : se déplacer de mot en mot vers la droite / vers la gauche en plaçant sur curseur sur la première lettre du mot de destination
+    * `e` (end) : Se déplacer de mot en mot vers la droite en plaçant sur curseur sur la dernière lettre du mot de destination
+    * `$` : Sse déplacer à la fin de la ligne
+    * `t<l>` / `T<l>` : Se déplacer jusqu'à la prochaine lettre `<l>` trouvée vers la droite / vers la gauche et positionner le curseur 1 caractère avant / après
+    * `u` (undo) / `CTRL + R` : revenir en arrière (équivalent du CTRL Z) / revenir
+     en avant (équivalent du CTRL Y)
+    * `gg` / `GG` (goto) : Se déplacer au début du fichier / à la fin du fichier
+    * `yy` : Copier la ligne sur laquelle se trouve le curseur
+    * `dd` (duplicate) : Copier et supprimer la ligne sur laquelle se trouve le curseur
+    * `p` (paste) : Coller à la ligne qui suit celle sur laquelle se trouve le curseur
   * Action en chaîne
-    * `<n><a>` = répéter `n` fois l'action `a` (ex: `2w`)
+    * `<n><a>` = répéter `n` fois l'action `<a>` (ex: `2w`)
+    * `d[<n>]<a>` = supprimer le contendu à partir du curseur jusque l'endroit désigné par l'action `[<n>]<a>` (`<n> = 1` par défaut)
   * Commandes
-    * `:q` (quit) : quitter (ne fonctionne pas si fichier modifié)
-    * `:q!` (quit!) : quitter sans sauvegarder
-    * `:w` (write) : enregistrer
-    * `:wq` (write & quit) : enregistrer et quitter
+    * `:q + enter` (quit) : quitter (ne fonctionne pas si fichier modifié)
+    * `:q! + enter` (quit!) : quitter sans sauvegarder
+    * `:w + enter` (write) : enregistrer
+    * `:wq + enter` (write & quit) : enregistrer et quitter
     * `CTRL + G` : afficher en bas de l'écran la position du curseur dans le fichier
+    * `CTRL + A` / `CTRL + X` : positionner le curseur sur le prochain nombre trouvé et l'incrémenter / le décrémenter
+    * `set nu + enter` (number) : afficher le numéro des lignes
+    * `:<n> + enter` : se déplacer à la ligne `<n>`
+  * Recherches
+    * `/<word>` = lancer la rechercher avec le mot `<word>` et se positionner sur la première occurrence trouvée
+    * `n` / `N` (next) : se positionner sur l'occurrence suivante / précédente quand la recherche est lancée
 * Mode `Insertion`
   * Activer dans ce mode `Insertion` : `i`
+    * `CTRL + N` : ouvrir l'auto-complétion (basé) sur les mots qui existent dans le fichier)
 
 ### `wc`
 
