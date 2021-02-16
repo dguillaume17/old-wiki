@@ -130,6 +130,16 @@ Raccourcis :
   * Recherches
     * `/<word>` = lancer la rechercher avec le mot `<word>` et se positionner sur la première occurrence trouvée
     * `n` / `N` (next) : se positionner sur l'occurrence suivante / précédente quand la recherche est lancée
+  * Macros
+    * `q<m>` = démarrer l'enregistrement de la macro numéro `<m>`
+    * `q` = stoper l'enregistrement de la macro
+    * `[<c>]@<m>` = exécuter la macro numéro `<m>` et répéter l'opération `<c>` fois (1 fois si `<c>` pas renseigné)
+    * `:reg` = afficher tout ce qui se trouve dans le registre (en y incluant la liste des macros déjà enregistrées)
+  * Remplacement
+    * `:s/<r>/<t>/g` (substitute ) = remplacer la regex `<r>` par le texte `<t>` (pour la ligne dans laquelle se trouve le curseur)
+    * `:%s/<r>/<t>/g[c]` (substitute ) = remplacer la regex `<r>` par le texte `<t>` (dans tout le fichier) et demande une confirmation pour chaque occurrence si la lettre `[c]` est spécifiée
+    * `:<l1>,<l2>s/<r>/<t>/g[c]` (substitute ) = remplacer la regex `<r>` par le texte `<t>` (pour le texte situé entre les lignes `<l1>` et `<l2>`) et demande une confirmation pour chaque occurrence si la lettre `[c]` est spécifiée
+
 * Mode `Insertion`
   * Activer dans ce mode `Insertion` : `i`
     * `CTRL + N` : ouvrir l'auto-complétion (basé) sur les mots qui existent dans le fichier)
