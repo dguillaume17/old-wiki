@@ -56,6 +56,20 @@ Raccourcis :
 
 * `^<t>` = `CTRL` + la touche du clavier `<t>`
 
+### `read`
+
+Lire dans l'entrée standard et affecter le contenu dans la variable passée en paramètre
+
+Paramètres :
+
+* `-p<t>` = imprimer le texte `<t>` avant de lire l'entrée standard
+
+Exemple :
+
+```bash
+read -p"Quel est votre nom? " nom && echo $nom
+```
+
 ### `sort`
 
 Trier les lignes par ordre alphabétique
@@ -434,6 +448,10 @@ ssh gder@192.168.0.70
 
 ## Systèmes de fichier
 
+### `alias`
+
+TODO
+
 ### `df`
 
 Lister les partitions et les espaces disques
@@ -483,6 +501,15 @@ Paramètres :
 * `-type d` = uniquement les répertoires
 * `-type f` = uniquement les fichiers
 
+### `ln`
+
+Créer un lien symbolique (répertoire) ou un lien en dur (fichier)
+
+Syntaxes :
+
+* `ln -s <dir> <link>` : créer le lien sybolique `<link>` qui pointe vers le répertoire `<dir>`
+* `ln <fic> <link>` : créer le lien en dur `<link>` qui pointe vers le fichier `<fic>` [TODO -> ca ne fonctionne pas !!!]
+
 ### `ls`
 
 Lister le contenu d'un ou plusieurs répertoires
@@ -490,31 +517,39 @@ Lister le contenu d'un ou plusieurs répertoires
 Paramètres :
 
 * `-l` = mode liste
-* `-a` = voir les contenus cachés
+* `-a` | `--all` = voir tous les fichiers
+* `-A` | `--almost-all` = voir tous les fichiers (sauf `.` et `..`)
 * `-F` = voir un astérix après le nom de chaque fichier exécutable
-* `-h` | `--human-readable` = afficher les tailles en notation ingénieur (uniquement en mode liste)
+* `-h` | `--human-readable` = afficher les tailles en notation ingénieur
+* `-r` | `--reverse` = inverser l'ordre d'affichage
+* `-R` | `--recursive` = mode récursif dans les répertoires et sous-répertoires
+(uniquement en mode liste)
 * `-d` | `--directory` = imprimer les informations du répertoire passé en paramètre
+* `--full-time` = afficher les dates et heures au format ISO complet
+* `--time=atime` / `--time=ctime` = afficher les `atime` / `ctime` (`mtime` est affiché par défaut)
 
 Résultat :
 
-* En mode liste, les droits d'accès sont affichés dans la colonne 1 en utilisant 10 symboles
-  * Symbole 1
-    * `-` : fichier classique
-    * `d` : répertoire
-    * `l` : lien symbolique
-    * `c` : périphérique de type caractère
-    * `b` : périphérique de type bloc
-    * `p` : pipe
-    * `s` : socket
-  * Symboles 2 & 5 & 8 : droits de lectures respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
-    * `-` : droit de lecture désactivé
-    * `r` : droit de lecture activé
-  * Symboles 3 & 6 & 9 : droits d'écriture respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
-    * `-` : droit d'écriture désactivé
-    * `w` : droit d'écriture activé
-  * Symboles 4 & 7 & 10 : droits d'exécution respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
-    * `-` : droit d'exécution désactivé
-    * `x` : droit d'exécution activé
+* Mode liste
+  * les droits d'accès sont affichés dans la colonne 1 en utilisant 10 symboles
+    * Symbole 1
+      * `-` : fichier classique
+      * `d` : répertoire
+      * `l` : lien symbolique
+      * `c` : périphérique de type caractère
+      * `b` : périphérique de type bloc
+      * `p` : pipe
+      * `s` : socket
+    * Symboles 2 & 5 & 8 : droits de lectures respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
+      * `-` : droit de lecture désactivé
+      * `r` : droit de lecture activé
+    * Symboles 3 & 6 & 9 : droits d'écriture respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
+      * `-` : droit d'écriture désactivé
+      * `w` : droit d'écriture activé
+    * Symboles 4 & 7 & 10 : droits d'exécution respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
+      * `-` : droit d'exécution désactivé
+      * `x` : droit d'exécution activé
+  * le `mtime` est affiché par défaut dans les dernières colonnes
 
 Alias :
 
@@ -576,6 +611,43 @@ Paramètres :
 * `-f` | `--force` = ne pas retourner d'erreur si le fichier ou le répertoire n'existe pas
 * `-r` | `--recursive` = supprimer un répertoire et son contenu
 * `-d` | `--dir` = supprimer un répertoire vide
+
+### `stat`
+
+Imprimer les statistiques d'un fichier / dossier
+
+Paaramètres :
+
+* `-c %a` : imprimer uniquement les droits d'accès en numérique
+* `-c %A` : imprimer uniquement les droits d'accès en alphanumérique
+* `-c %s` : imprimer uniquement la taille en octets
+* `-c %U` : imprimer le nom du propriétaire
+* `-c %w` / `-c %W`  : imprimer le `btime` au format ISO / en secondes depuis l'époque Unix
+* `-c %x` / `-c %X` : imprimer le `atime` au format ISO / en secondes depuis l'époque Unix
+* `-c %y` / `-c %Y` : imprimer le `mtime` au format ISO / en secondes depuis l'époque Unix
+* `-c %z` / `-c %Z` : imprimer le `ctime` au format ISO / en secondes depuis l'époque Unix
+
+Résultat :
+
+* Mode par défaut
+  * Ligne 1 : nom du fichier / dossier
+  * ligne 2 : Tailles dans les différents formats
+  * Ligne `Access` 1 : droits d'accès
+  * Ligne `Access` 2 : `atime`
+  * Ligne `Modify` : `mtime`
+  * Ligne `Change` : `ctime`
+
+### `touch`
+
+Créer un nouveau fichier texte ou mettre à jour la date et heure de modification d'un fichier texte existant
+
+Paramètres :
+
+* `-a` : changer la date et heure d'accès du fichier
+* `-m` : changer la date et heure de modification du fichier
+* `-t<dh>` : changer la date et heure de modification du fichier avec celle spécifiée `<dh>` (au format `YYYYMMDDhhmm.ss`)
+
+Exemples :
 
 ## Réseau
 
