@@ -71,6 +71,16 @@ tata=1
 tutu=false
 ```
 
+* Tableaux
+
+```bash
+liste=(1 ok true)
+echo "${liste}" #imprimer le premier indice du tableau (=1)
+echo "${liste[0]}" #imprimer le premier indice du tableau (=1)
+echo "${liste[1]}" #imprimer le deuxième indice du tableau (=ok)
+echo "${liste[*]}" #imprimer tout le tableau (=1 ok true)
+```
+
 ## Conditions
 
 Recommandation :

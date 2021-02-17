@@ -15,6 +15,39 @@ Paramètres :
 
 Imprimer le contenu passé en paramètre
 
+### `printf`
+
+Formatter plusieurs variables concaténée et écrire le résultat dans la sortie standard
+
+Paramètres :
+
+* `\n` = Retour à la ligne
+* `%[<n>|-<n>]s` = Ecrire une chaîne de caractères...
+  * Si `<n>` : ...sur `n` position(s) et cadrer à droite
+  * Si `<-n>` : ...sur `n` position(s) et cadrer à gauche
+* `%[+][<n>|-<n>]d` = Ecrire un nombre entier...
+  * Si `<n>` : ...sur `n` position(s) et cadrer à droite
+  * Si `<-n>` : ...sur `n` position(s) et cadrer à gauche
+  * Si `<+>` : ...avec le signe
+* `%[+][<n.d>|-<n.d>]f` = Ecrire un nombre flotant...
+  * Si `<n.d>` : ...sur `n` position(s) au total dont `d` décimales et cadrer à droite
+  * Si `<-n.d>` : ...sur `n` position(s) au total dont `d` décimales et cadrer à gauche
+  * Si `<+>` : ...avec le signe
+
+Exemples :
+
+```bash
+article="Livres"
+quantite=3
+prix=3.5
+printf "%-20s***%03d***%+10.2f\n" $article $quantite $prix
+```
+
+```bash
+liste=(livre 10 3.5 cd 5 10.65 dvd 7 19.70 bd 80 5.25)
+printf "%-20s***%03d***%+10.2f\n" ${liste[*]}
+```
+
 ### `less`
 
 Visualiser le contenu d'un fichier texte et naviguer
@@ -503,12 +536,35 @@ Paramètres :
 
 ### `ln`
 
-Créer un lien symbolique (répertoire) ou un lien en dur (fichier)
+Créer des raccourcis entre les fichiers et les répertoires.
 
-Syntaxes :
+#### Lien physique
 
-* `ln -s <dir> <link>` : créer le lien sybolique `<link>` qui pointe vers le répertoire `<dir>`
-* `ln <fic> <link>` : créer le lien en dur `<link>` qui pointe vers le fichier `<fic>` [TODO -> ca ne fonctionne pas !!!]
+Permet de créer un fichier / répertoire (=raccourci) qui pointera vers un fichier / répertoire d'origine (=source).
+
+Le raccourci aura le même numéro d'inode que la source.
+
+Il faut supprimer le raccourci et la source pour que le contenu soit réellement supprimé.
+
+Si on supprime uniquement la source, le contenu existe toujours et est accessible via le raccourci.
+
+Syntaxe :
+
+* `ln <src> <link>` : créer le lien physique `<link>` qui pointe vers la source `<src>`
+
+#### Lien symbolique
+
+Permet de créer un fichier / répertoire (=raccourci) qui pointera vers un fichier / répertoire d'origine (=source).
+
+Le raccourci aura un numéro d'inode différence de la source.
+
+Il faut supprimer uniquement la source pour que le contenu soit réellement supprimé.
+
+Si on supprime uniquement la source, le contenu n'existe plus et n'est donc plus accessible via le raccourci. Le raccourci est alors imprimé en rouge par la commande `ls` pour signaler qu'il est corrompu.
+
+Syntaxe :
+
+* `ln -s <src> <link>` : créer le lien symbolique `<link>` qui pointe vers la source `<src>`
 
 ### `ls`
 
@@ -527,6 +583,8 @@ Paramètres :
 * `-d` | `--directory` = imprimer les informations du répertoire passé en paramètre
 * `--full-time` = afficher les dates et heures au format ISO complet
 * `--time=atime` / `--time=ctime` = afficher les `atime` / `ctime` (`mtime` est affiché par défaut)
+* `--sort=none` / `--sort=size` / `--sort=time` / `--sort=extension` = sans tri / avec tri par taille / avec tri par date et heure / avec tri par extension
+* `-i` | `--inode` = afficher le numéro d'inode (id unique pour chaque fichier / répertoire)
 
 Résultat :
 
@@ -549,6 +607,7 @@ Résultat :
     * Symboles 4 & 7 & 10 : droits d'exécution respectivement pour l'utilisateur associé, pour le groupe associé et pour les autres
       * `-` : droit d'exécution désactivé
       * `x` : droit d'exécution activé
+  * l'avant dernière colonne affiche le propriétaire et le groupe
   * le `mtime` est affiché par défaut dans les dernières colonnes
 
 Alias :
