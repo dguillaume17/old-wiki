@@ -548,6 +548,8 @@ Il faut supprimer le raccourci et la source pour que le contenu soit réellement
 
 Si on supprime uniquement la source, le contenu existe toujours et est accessible via le raccourci.
 
+Attention que la commande `ls` ne distingue pas un fichier / répertoire classique d'un lien physique. Pour voir le lien physique, il faut se référer au numéro d'inode.
+
 Syntaxe :
 
 * `ln <src> <link>` : créer le lien physique `<link>` qui pointe vers la source `<src>`
