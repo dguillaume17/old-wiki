@@ -292,6 +292,26 @@ Faire une pause (mesurée en secondes)
 
 ## Programmes
 
+### `alias`
+
+Permet de gérer les alias
+
+Paramètres
+
+* `alias` = imprimer la liste de tous les alias
+* `alias <a>` = imprimer la définition de l'alias `<a>`
+* `alias <a>='<c>'` = définir l'alias `<a>` de manière temporaire avec la commande `<c>`
+
+Remarques :
+
+* Pour persister la définition d'un alias, il faut définir l'alias de manière temporaire à chaque ouverture de la console (Cfr. fichier `.bashrc`)
+
+Exemple :
+
+```bash
+alias coucou='echo "coucou"'
+```
+
 ### `watch`
 
 Exécute une commande à intervalle régulier et affiche le résultat dans la console
@@ -755,9 +775,15 @@ sudo addgroup easi
 
 ### `adduser`
 
+Gérer les utilisateurs.
+
+Attention, il est préférable d'utiliser la commande `adduser` plutôt que la commande `useradd` car cette dernière doit être utilisée uniquement pour des opérations de bas niveau.
+
 #### Mode création
 
 Créer un utilisateur (Cfr. fichier `/etc/passwd`)
+
+Lorsqu'un utilisateur est créé, son répertoire personnel est créé en copiant le contenu du répertoire `/etc/skel`. Il est par exemple possible de personnaliser le fichier `bashrc` des utilisateurs créés.
 
 Exemple :
 

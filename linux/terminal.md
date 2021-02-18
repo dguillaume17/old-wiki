@@ -14,6 +14,17 @@ Exemple :
 chmod 777 .
 ```
 
+### `~`
+
+Répertoire de l'utilisateur en cours
+
+Exemple :
+
+```bash
+cd ~
+pwd #imprime /home/xxx
+```
+
 ### `$?`
 
 Statut de la dernière commande
@@ -162,6 +173,17 @@ Exemple :
 sleep 10 &
 ```
 
+### `$(...)`
+
+Permet de récupérer la sortie standard d'une commande dans une variable
+
+Exemple :
+
+```bash
+test=$(echo coucou)
+echo $test
+```
+
 ## Raccourcis
 
 ### `CTRL + R`
@@ -193,3 +215,16 @@ Fonctionnement :
 * `ECHAP #` pour ajouter `#` au début de la commande en cours et ouvrir une nouvelle commande
 * Il est possible de revenir à la commande commentée grâce à l'historique des commandes
 
+## Configuration
+
+A chaque ouverture du shell, un script `bashrc` publique est d'abord exécuté et ensuite un script `bashrc` privé est exécuté.
+
+Ces deux fichiers peuvent exécuter d'autres scripts `bashrc`
+
+Le script `bashrc` publique est situé :
+
+* soit dans `/etc/bashrc` (Redhat, Fedora)
+* soit dans `/etc/bash.bashrc` (Debian, Ubuntu, Linux Mint)
+* soit dans `/etc/bash.bashrc.local` (Suse, OpenSuse)
+
+Le script `bashrc` privé est situé dans `~/.bashrc`

@@ -1,5 +1,7 @@
 # Linux | Arborescence
 
+## Répertoires
+
 * `/` :
   Ce répertoire est le dossier "racine" qui contient tous les répertoires principaux du système.
 * `/bin` (Binaries)
@@ -74,3 +76,25 @@
     Ex: les fichiers de base de données de `MySQL`
 * `/var/www`
     Ce répertoire contient les fichiers qui sont hébergés par les serveurs web.
+
+## Fichiers
+
+### `/etc/passwd`
+
+Ce fichier contient une ligne par utilisateur.
+Pour chaque ligne, tous les 7 champs sont séparés par `:`.
+
+Format :
+
+* Champ 1 = Nom d'utilisateur
+* Champ 2 = Mot de passe crypté
+* Champ 3 = UID de l'utilisateur
+* Champ 4 = Groupe principal (stocké dans `/etc/group`)
+* Champ 5 = Informations additionnelles provenant de l'administrateur
+* Champ 6 = Répertoire personnel
+* Champ 7 = Chemin absolu vers le shell
+  * valeur par défaut : `/bin/bash`
+  * si valeur `/sbin/nologin` : cela signifie que l'utilisateur ne peut pas se connecter car le script ferme tout de suite le shell
+
+### `/etc/group`
+
