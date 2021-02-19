@@ -35,9 +35,14 @@ Exemples :
 
 ```bash
 echo *
+
 ls -d *
+
 ls
+
 find . -maxdepth 1
+
+for i in *; do echo $i; done
 ```
 
 * Lister tous les répertoires d'un dossier
