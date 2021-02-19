@@ -35,21 +35,25 @@ Exemples :
 
 ```bash
 echo *
-
+#ou
 ls -d *
-
-ls
-
-find . -maxdepth 1
-
+#ou
 for i in *; do echo $i; done
+#ou
+ls
+#ou
+find . -maxdepth 1
 ```
 
 * Lister tous les répertoires d'un dossier
 
 ```bash
 echo */
+#ou
 ls -d */
+#ou
+for i in */; do echo $i; done
+#ou
 find . -type d -maxdepth 1
 ```
 
