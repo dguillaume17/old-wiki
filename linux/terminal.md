@@ -25,6 +25,29 @@ cd ~
 pwd #imprime /home/xxx
 ```
 
+### `*` & `*/`
+
+Tableau contenant respectivement la liste des fichiers / répertoires et la liste des répertoires
+
+Exemples :
+
+* Lister tous les fichiers et répertoires d'un dossier
+
+```bash
+echo *
+ls -d *
+ls
+find . -maxdepth 1
+```
+
+* Lister tous les répertoires d'un dossier
+
+```bash
+echo */
+ls -d */
+find . -type d -maxdepth 1
+```
+
 ### `$?`
 
 Statut de la dernière commande
