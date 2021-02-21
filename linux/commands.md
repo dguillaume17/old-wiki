@@ -705,11 +705,11 @@ Paramètres :
 * `-u ^<user-name>` = limiter la liste pour tous sauf l'utilisateur spécifié
 * `-p <pid>` = limiter la liste pour le PID spécifié
 * `-i` = limiter uniquement les connexions réseaux
-* `-i <port-numer>` = limiter uniquement les connexions réseaux sur le port spécifié
+* `-i :<port-numer>` = limiter uniquement les connexions réseaux sur le port spécifié
 
 Remarque :
 
-* chaque paramètre est une condition séparée par un `OU`
+* chaque paramètre pour limiter est une condition séparée par un `OU`
 
 ### `mkdir`
 
@@ -771,6 +771,19 @@ Paramètres :
 Exemples :
 
 ## Réseau
+
+### `lsof` (2)
+
+Cfr. `lsof` (1)
+
+### `netstat`
+
+Paramètres :
+
+* `-l` : uniquement les sockets avec le statut `LISTEN`
+* `-t` : uniquement les sockets du type `TCP`
+* `-n`: ne pas faire de résolution de noms
+* `-p` : afficher le nom et le numéro du processus
 
 ### `tcpdump`
 
@@ -900,3 +913,43 @@ Exemple :
 ```bash
 sudo usermod toto -G easi,house
 ```
+
+## Services
+
+### `systemctl`
+
+Cette commande permet de gérer les services.
+
+#### Mode liste
+
+Syntaxe : `systemctl [<paramètres>]`
+
+Paramètres :
+
+* `--type=<t>` : seulement le type `<t>` (ex: `service`)
+* `--state=<s>` : seulement le statut `<s>` (ex: `active`, `running`)
+
+#### Mode détail
+
+Syntaxe : `systemctl <opération> <srv>`
+
+Opérations :
+
+* `stop` : arrêter le service `<srv>`
+* `start` : démarrer le service `<srv>`
+* `restart` : redémarrer le service `<srv>`
+* `reload` : recharger la configuration du service `<srv>`
+* `stop` : arrêter le service `<srv>`
+* `stop` : arrêter le service `<srv>`
+
+### `apache`
+
+#### `apache2ctl``
+
+Syntaxe : `appache2ctl <param>`
+
+Paramètres :
+
+* `-v` : voir la version d'Apache utilisée
+* `-t` : tester l'ensemble de la configuration d'Apache
+* `-M` : voir les modules d'Apache chargés

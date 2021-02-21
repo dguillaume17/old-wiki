@@ -1,5 +1,16 @@
 # Linux | Bash
 
+## Types
+
+Un `shell` est un interprêteur de commandes.
+Il en existe plusieurs types:
+
+* `bash` : Bourne-Again Shell (`/bin/bash`)
+* `zsh` : Z Shell (`/bin/zsh`)
+
+Bash est le shell par défaut de GNU/Linux.
+Zsh est le shell par défaut de MacOS.
+
 ## Shebang
 
 Définir que le script doit s'exécuter avec sh ou un shell compatible
