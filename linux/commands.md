@@ -2,6 +2,17 @@
 
 ## Textes
 
+### `bc`
+
+Calculer des opérations arithmétiques et certaines fonctions mathématiques à partir d'une chaîne
+
+Exemple :
+
+```bash
+echo "(1+2)*3" | bc -l
+echo "sqrt(4)" | bc -l #racine carrée
+```
+
 ### `cat`
 
 Imprimer le fichier d'un fichier texte
@@ -311,6 +322,35 @@ Exemple :
 ```bash
 alias coucou='echo "coucou"'
 ```
+
+### `lsb_release`
+
+Imprimer les informations de la distribution Linux en cours
+
+Paramètres
+
+* `-a` | `--all` = imprimer tout
+* `-s` | `--short` = imprimer tout au format réduit
+* `-v` | `--version` = imprimer le numéro de version
+* `-i` | `--id` = imprimer le nom du distributeur
+* `-d` | `--description` = imprimer la description
+* `-r` | `--release` = imprimer le numéro de release
+* `-c` | `--codename` = imprimer le nom de code
+
+### `uname`
+
+Imprimer les informations systèmes
+
+Paramètres
+
+* `-a` | `--all` = imprimer tout
+* `-s` | `--kernel-name` = imprimer le nom du noyau
+* `-r` | `--kernel-release` = imprimer la release du noyau
+* `-v` | `--kernel-version` = imprimer la version du noyau
+* `-n` | `--nodename` = imprimer le nom d'hôte réseau
+* `-m` | `--machine` = imprimer nom matériel de la machine
+* `-p` | `--processor` = imprimer le type du processeur
+* `-o` | `--operating-system` = imprimer l'OS
 
 ### `watch`
 

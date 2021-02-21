@@ -216,6 +216,19 @@ test=$(echo coucou)
 echo $test
 ```
 
+### `$((...))`
+
+Permet de réaliser des opérations arithmétiques à partir d'une chaîne.
+
+Contrairement à la commande `bc`, `$((...))` ne permet pas de calculer des fonctions mathématiques
+
+Exemple :
+
+```bash
+echo $(("(1+2)*3"))
+echo "(1+2)*3" | bc -l
+```
+
 ## Raccourcis
 
 ### `CTRL + R`
