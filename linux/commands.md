@@ -26,6 +26,60 @@ Paramètres :
 
 Imprimer le contenu passé en paramètre
 
+### `jq`
+
+Formatter du contenu JSON
+
+* Syntaxes
+  1. `jq '<format>' <fichier>`
+  2. `... | jq '<format>'`
+* Exemple
+  * Créer le fichier `json.txt`
+
+    ```json
+    {
+        "fruit" : {
+            "name" : "apple",
+            "color": "green",
+            "price": 1.20,
+            "v1": "value1",
+            "v2": "value2",
+            "with space": true,
+            "tbl": [
+                {
+                    "name": "test1",
+                    "value": 1
+                },
+                {
+                    "name": "test2",
+                    "value": 2
+                },
+                {
+                    "name": "test3",
+                    "value": 3
+                }
+            ]
+        }
+    }
+    ```
+
+  * Imprimer les données du fichier `json.txt`
+
+    ```bash
+    jq '.' json.txt                    #écrire l'objet racine
+    jq '.fruit' json.txt               #écrire l'objet
+    jq '.fruit.name' json.txt          #écrire le contenu d'une variable
+    jq '.fruit.v1,.fruit.v2' json.txt  #écrire le contenu de plusieurs variables
+    jq '.fruit."with space"' json.txt  #écrire le contenu d'une variable dont le nom n'est pas conforme
+    jq '.fruit.tbl' json.txt           #écrire le tableau
+    jq '.fruit.tbl[]' json.txt         #écrire les valeurs du tableau
+    jq '.fruit.tbl[1]' json.txt        #écrire la valeur de l'indice 2 du tableau
+    jq '.fruit | keys' json.txt        #écrire un tableau avec les clés de l'objet
+    jq '.fruit | keys[]' json.txt      #écrire les clés de l'objet
+    jq '.fruit.tbl | length' json.txt  #écrire la taille du tableau
+    jq '.fruit.tbl[] | select(.name=="test2" and .value>=2)' json.txt #rechercher dans le tableau et écrire l'objet du résultat
+    ```
+
 ### `printf`
 
 Formatter plusieurs variables concaténée et écrire le résultat dans la sortie standard
@@ -401,6 +455,11 @@ less /etc/passwd | awk -F: '{print $1}'
 
 Imprimer les lignes correspondant à un motif donné
 
+Syntaxtes
+
+* `... | grep <params> "<recherche>"`
+* `grep <params> "<recherche>" <fichier>`
+
 Paramètres :
 
 * `-c` = compter le nombre d'occurrences
@@ -412,6 +471,7 @@ Paramètres :
 * `-n` = afficher les numéros des lignes
 * `-<number>` = afficher les x lignes qui précèdent et succèdent le résultat
 * `-r <folder-path>` = recherche dans tous les fichier du répertoire et de ses sous-répertoires (pas possible en mode `pipe`)
+* `-o` | `--only-matching` = écrire uniquement le motif recherché   
 
 Exemples :
 

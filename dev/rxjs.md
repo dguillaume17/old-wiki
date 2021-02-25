@@ -8,6 +8,7 @@
 * from()
 * fromEvent()
 * timer()
+* iif()
 
 ## Opérateurs
 
