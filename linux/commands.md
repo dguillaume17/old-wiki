@@ -28,57 +28,67 @@ Imprimer le contenu passé en paramètre
 
 ### `jq`
 
-Formatter du contenu JSON
+Sélectionner des propriétés dans un contenu JSON et écrire le résultat
 
 * Syntaxes
-  1. `jq '<format>' <fichier>`
-  2. `... | jq '<format>'`
-* Exemple
-  * Créer le fichier `json.txt`
+  1. `jq [<paramètres>] '<format>' <fichier>`
+  2. `... | jq [<paramètres>] '<format>'`
+* Paramètres
+  * `-r` ou `--raw-input` : ne pas ajouter de double quote pour les valeurs `string`
+* Format
+  * Exemple 1
 
     ```json
     {
         "fruit" : {
-            "name" : "apple",
-            "color": "green",
-            "price": 1.20,
-            "v1": "value1",
-            "v2": "value2",
-            "with space": true,
-            "tbl": [
+            "nom" : "apple",
+            "couleur": "green",
+            "prix hors TVA": 1.20,
+            "fournisseurs": [
                 {
-                    "name": "test1",
-                    "value": 1
+                    "nom": "test1",
+                    "importance": 1
                 },
                 {
-                    "name": "test2",
-                    "value": 2
+                    "nom": "test1",
+                    "importance": 2
                 },
                 {
-                    "name": "test3",
-                    "value": 3
+                    "nom": "test1",
+                    "importance": 3
+                },
+                {
+                    "nom": "test2",
+                    "importance": 1
                 }
             ]
+        },
+        "légume": {
+            "nom" : "tomate"
         }
     }
     ```
 
-  * Imprimer les données du fichier `json.txt`
-
-    ```bash
-    jq '.' json.txt                    #écrire l'objet racine
-    jq '.fruit' json.txt               #écrire l'objet
-    jq '.fruit.name' json.txt          #écrire le contenu d'une variable
-    jq '.fruit.v1,.fruit.v2' json.txt  #écrire le contenu de plusieurs variables
-    jq '.fruit."with space"' json.txt  #écrire le contenu d'une variable dont le nom n'est pas conforme
-    jq '.fruit.tbl' json.txt           #écrire le tableau
-    jq '.fruit.tbl[]' json.txt         #écrire les valeurs du tableau
-    jq '.fruit.tbl[1]' json.txt        #écrire la valeur de l'indice 2 du tableau
-    jq '.fruit | keys' json.txt        #écrire un tableau avec les clés de l'objet
-    jq '.fruit | keys[]' json.txt      #écrire les clés de l'objet
-    jq '.fruit.tbl | length' json.txt  #écrire la taille du tableau
-    jq '.fruit.tbl[] | select(.name=="test2" and .value>=2)' json.txt #rechercher dans le tableau et écrire l'objet du résultat
+    * `.` : objet racine
+    * `.fruit` : objet `fruit`
+    * `.fruit|keys` : tableau avec les clés de l'objet `fruit`
+    * `.fruit|keys[]` : valeurs du tableau avec les clés de l'objet `fruit`
+    * `.fruit.couleur` : propriété `couleur` contenu dans l'objet `fruit`
+    * `.fruit."prix hors TVA"` : propriété `prix hors TVA` contenu dans l'objet `fruit`
+    * `.fruit,."légume"` : objet `fruit` et objet `légume`
+    * `.fruit.fournisseurs` : tableau `fournisseurs` contenu dans l'objet `fruit`
+    * `.fruit.fournisseurs|length` : taille du tableau `fournisseurs` contenu dans l'objet `fruit`
+    * `.fruit.fournisseurs[]` : valeurs des éléments du tableau `fournisseurs` contenu dans l'objet `fruit`
+    * `.fruit.fournisseurs[2]` : valeur du 3e élément du tableau `fournisseurs` contenu dans l'objet `fruit`
+    * `.fruit.fournisseurs[]|select(.nom=="test1" and .importance>=2)` : valeurs des éléments du tableau `fournisseurs` contenu dans l'objet `fruit` dont la condition au sein des éléments du tableau est vraie
+  * Exemple 2
+  
+    ```json
+    [1, 2, 3]
     ```
+
+    * `.` : tableau racine
+    * `.[]` : valeurs des éléments du tableau racine
 
 ### `printf`
 
