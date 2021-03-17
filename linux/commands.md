@@ -491,6 +491,12 @@ Exemples :
 ps aux | grep -v "bash"
 ```
 
+* mode `or`
+
+```bash
+cat passwd | grep 'gder\|ffon'
+```
+
 * recherche
 
 ```bash
@@ -839,6 +845,9 @@ Paramètres :
 * `-t<dh>` : changer la date et heure de modification du fichier avec celle spécifiée `<dh>` (au format `YYYYMMDDhhmm.ss`)
 
 Exemples :
+
+touch -t 202203101010 AppService.php
+https://www.mkssoftware.com/docs/man1/touch.1.asp
 
 ## Réseau
 

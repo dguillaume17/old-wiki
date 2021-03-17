@@ -20,3 +20,4 @@
 * concatMap()
 * mergeMap()
 * takeUntil()
+* filter()
