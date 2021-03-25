@@ -132,6 +132,7 @@ Raccourcis :
 * Haut | Bas : (`up` | `down`) ou (`y` | `e`) ou (`k` | `j`)
 * Début | Fin : `b` | `space`
 * Quitter : `q`
+* :
 
 Exemple :
 
@@ -482,6 +483,10 @@ Paramètres :
 * `-<number>` = afficher les x lignes qui précèdent et succèdent le résultat
 * `-r <folder-path>` = recherche dans tous les fichier du répertoire et de ses sous-répertoires (pas possible en mode `pipe`)
 * `-o` | `--only-matching` = écrire uniquement le motif recherché   
+* `:5` = aller à la ligne 5
+* `/mot` = rechercher le mot
+  * `n` pour rechercher l'occurence suivante
+  * `N` pour rechercher l'occurence précédente
 
 Exemples :
 
@@ -1032,3 +1037,35 @@ Paramètres :
 * `-v` : voir la version d'Apache utilisée
 * `-t` : tester l'ensemble de la configuration d'Apache
 * `-M` : voir les modules d'Apache chargés
+
+## Mysql
+
+### `mysqldump`
+
+Faire un dump de MySQL
+
+* Syntaxte :
+
+1. `mysqldump [paramètres] %database% > %file.sql%`
+2. `mysqldump [paramètres] %database% %table1% %table2% ... %tableN% > %fil.sql%`
+
+* Paramètres
+  * `-u toto` | `--user=toto` : nom d'utilisateur `toto`
+  * `-p1234` | `--password=1234` : password `1234`
+  * `-p` | `--password` : password demandé dans le prompt
+  * `-P 3308` | `--port=3308`
+  * `-w "idCustomer=1"` | `--where="idCustomer=1"`
+  * `--ignore-table=rooftop.customers` : ignorer la table `customers` de la db `rooftop`
+    * cette option peut être utilisée plusieurs fois pour spécifier plusieurs tables
+
+### `mysql`
+
+* Syntaxte : `mysql [paramètres] %database% < %file.sql%`
+
+* Paramètres
+  * `-u toto` | `--user=toto` : nom d'utilisateur `toto`
+  * `-p1234` | `--password=1234` : password `1234`
+  * `-p` | `--password` : password demandé dans le prompt
+  * `-P 3308` | `--port=3308`
+  * `-b` | `--batch` : imprimer une tabulation comme séparateur entre chaque colonne du SELECT
+  * `-e "select ..."` | `--execute="select ..."` : exécuter la requête spécifiée en paramètre

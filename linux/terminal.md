@@ -216,6 +216,19 @@ test=$(echo coucou)
 echo $test
 ```
 
+### `eval`
+
+Permet d'exécuter une commande qui se trouve sous forme d'une chaine
+
+Je préfère utiliser `eval` à la place de `$(...)` car `mysqldump` m'a déjà posé problème avec `$(...)`
+
+Exemple :
+
+```bash
+test="echo \"coucou\""
+eval $test
+```
+
 ### `$((...))`
 
 Permet de réaliser des opérations arithmétiques à partir d'une chaîne.

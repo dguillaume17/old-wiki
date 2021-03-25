@@ -21,3 +21,9 @@
 * mergeMap()
 * takeUntil()
 * filter()
+
+* throttleTime()
+* debounceTime()
+* repeatWhen()
+
+Both throttleTime and debounceTime ignore the events which come in the meantime, but throttleTime emits right away, while debounceTime waits for additional delay.
