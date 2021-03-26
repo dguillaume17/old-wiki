@@ -2,29 +2,6 @@
 
 ## Textes
 
-### `bc`
-
-Calculer des opérations arithmétiques et certaines fonctions mathématiques à partir d'une chaîne
-
-Exemple :
-
-```bash
-echo "(1+2)*3" | bc -l
-echo "sqrt(4)" | bc -l #racine carrée
-```
-
-### `cat`
-
-Imprimer le fichier d'un fichier texte
-
-Paramètres :
-
-* `-n` | `--number` = afficher le numéro de lignes
-* `-b` | `--number-nonblank` = afficher le numéro des lignes non vides
-
-### `echo`
-
-Imprimer le contenu passé en paramètre
 
 ### `jq`
 
