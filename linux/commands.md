@@ -1069,3 +1069,11 @@ Faire un dump de MySQL
   * `-P 3308` | `--port=3308`
   * `-b` | `--batch` : imprimer une tabulation comme séparateur entre chaque colonne du SELECT
   * `-e "select ..."` | `--execute="select ..."` : exécuter la requête spécifiée en paramètre
+
+## CRON
+
+### Logs
+
+```bash
+grep cron /var/log/syslog
+```
