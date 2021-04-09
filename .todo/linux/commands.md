@@ -244,16 +244,6 @@ Raccourcis :
   * Activer dans ce mode `Insertion` : `i`
     * `CTRL + N` : ouvrir l'auto-complétion (basé) sur les mots qui existent dans le fichier)
 
-### `wc`
-
-Compter le nombre de lignes, de mots et de caractères d'un fichier
-
-Paramètres :
-
-* `-l` | `--lines` : nombre le lignes
-* `-w` | `--words` : nombre de mots
-* `-c` | `--chars` : nombre de caractères
-
 ## Permissions
 
 ### `chmod`
