@@ -91,58 +91,91 @@ Paramètres :
 * `-n` | `--number` : imprimer le numéro des lignes
 * `-b` | `--number-nonblank` : imprimer le numéro des lignes non vides
 
-### `echo`
+## `echo`
 
-Imprimer la chaîne de caractères passée en paramètre
+Imprimer la chaîne de caractères passée en argument
 
-Exemples :
+Exemples
 
 ```bash
-echo "Hello World!"
-> Hello World!
+echo "Hello World"
+> Hello World
 ```
 
-### `wc`
+Paramètres
 
-Compter le nombre de lignes, de mots et de caractères d'un fichier
-
-Exemples :
+* Echaper les backslashs (`e`)
 
 ```bash
-wc test1.txt
-> 74    88      364     test1.txt
-```
-
-* 74 = nombre de lignes
-* 88 = nombre de mots
-* 364 = nombre de caractères
-
-```bash
-wc test1.txt test2.txt
-> 74    88      364     test1.txt
-> 65    75      287     test2.txt
-> 139   163     651     total
+echo -e "Hello\nWorld\n\nLinux"
+> Hello
+> World
+>
+> Linux
 ```
 
 ```bash
-cat test1.txt | wc
-> 74    88      364
-```
-
-Paramètres :
-
-```bash
-wc test1.txt test2.txt -l
-> 74    test1.txt
-> 65    test2.txt
-> 139   total
+echo -e "Tabulations:\tOne\tTwo\tThree"
+Tabulations:    One     Two     Three
 ```
 
 ```bash
-cat test1.txt | wc -l
-> 74
+echo -e "Backslash: \\"
+> Hello
+>
+> With    Tabulation and backslash \
 ```
 
-* `-l` | `--lines` : nombre le lignes
-* `-w` | `--words` : nombre de mots
-* `-c` | `--chars` : nombre de caractères
+## `wc`
+
+Compter le nombre :
+
+* de lignes
+* de mots
+* de caractères
+
+Exemples
+
+* avec fichiers
+
+    ```bash
+    wc test1.txt
+    > 74    88      364     test1.txt
+    ```
+
+    ```bash
+    wc test1.txt test2.txt
+    > 74    88      364     test1.txt
+    > 65    75      287     test2.txt
+    > 139   163     651     total
+    ```
+
+* avec entrée standard
+
+    ```bash
+    cat test1.txt | wc
+    > 74    88      364
+    ```
+
+Paramètres
+
+* nombre le lignes (`-l` ou `--lines`)
+
+    ```bash
+    cat test1.txt | wc -l
+    > 74
+    ```
+
+* nombre de mots (`-w` ou `--words`)
+
+    ```bash
+    cat test1.txt | wc -w
+    > 88
+    ```
+
+* nombre de caractères (`-c` ou `--chars`)
+
+    ```bash
+    cat test1.txt | wc -c
+    > 364
+    ```
