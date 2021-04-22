@@ -7,7 +7,7 @@ https://www.simpleorientedarchitecture.com/storing-the-state-of-a-long-running-p
 
 https://www.simpleorientedarchitecture.com/handling-failure-in-long-running-processes/
 
-Process Manager Instance = Process Manager ??? = Correction Id
+Process Manager Instance = Process Manager Tacker = Correction Id
 
 OrderProcessRouter
 

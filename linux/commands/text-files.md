@@ -126,6 +126,22 @@ echo -e "Backslash: \\"
 > With    Tabulation and backslash \
 ```
 
+## `grep`
+
+```bash
+grep -R "slow" /etc/mysql
+> mysql.conf.d/mysqld.cnf:slow_query_log = 1
+> mysql.conf.d/mysqld.cnf:slow_query_log_file = /var/log/mysql/mysql-slow.log
+```
+
+```bash
+pwd
+> /etc/mysql
+grep -R "slow"
+> mysql.conf.d/mysqld.cnf:slow_query_log = 1
+> mysql.conf.d/mysqld.cnf:slow_query_log_file = /var/log/mysql/mysql-slow.log
+```
+
 ## `wc`
 
 Compter le nombre :
