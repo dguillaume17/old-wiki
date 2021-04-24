@@ -1,6 +1,31 @@
 # VirtualBox
 
-## Keyboard
+## Configurer VirtualBox pour Ubuntu Desktop
+
+1.
+
+    /Applications/VirtualBox.app/Contents/Resources
+    Clique droit sur le fichier VirtualBoxVM.app et ouvrir "Get Info"
+    Cocher "Open in Low Resolution"
+
+2. Dans les Settings de VirtualBox
+
+    Onglet System > Motherboard
+        "Base Memory" = 8Go
+
+    Onglet System > Processor
+        "Processor(s)" = 4
+        "Execution Cap" = Max (100%)
+
+    Onglet Display
+        "Video Memory" = Max (128MB)
+        "Scale Factor" = Min (100%)
+        "Graphics Controller" = VBoxSVGA
+        Décocher "Enable 3D Acceleration"
+
+    Onglet Audio
+
+## Configurer le clavier
 
 ### Ubuntu Desktop
 
@@ -60,3 +85,34 @@ Variante : Français (Macintosh)
     lsmod | grep vboxguest
     > vboxguest     303104  2   vboxsf
     ```
+
+## Benchmark
+
+### 1
+
+sudo apt install mesa-utils
+
+```bash
+glxgears
+> 300 frames in 5.0 seconds = 59.998 FPS
+> 300 frames in 5.0 seconds = 59.788 FPS
+> ...
+```
+
+
+### 2
+
+
+wget http://phoronix-test-suite.com/releases/repo/pts.debian/files/phoronix-test-suite_7.8.0_all.deb
+
+sudo apt install gdebi-core
+
+
+sudo gdebi phoronix-test-suite_7.8.0_all.deb
+
+phoronix-test-suite --version
+
+
+### 3
+
+sudo apt install sysbench
