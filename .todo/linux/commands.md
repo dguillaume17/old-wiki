@@ -1,5 +1,15 @@
 # Linux | Commandes
 
+
+## `date`
+
+Imprimer la date système dans la sortie standard
+
+```bash
+ date
+> Mon Apr 26 17:24:48 CEST 2021
+```
+
 ## Textes
 
 
@@ -605,6 +615,12 @@ Paramètres :
 
 Imprimer la taille des répertoires
 
+Taille du répertoire en cours avec ses dous-dossiers
+
+```bash
+du -sh .
+```
+
 Paramètres :
 
 * `-h` = afficher la taille en notation ingénieur
@@ -966,6 +982,10 @@ sudo usermod toto -G easi,house
 ```
 
 ## Services
+
+### dmesg
+
+affiche la mémoire tampon de message du noyau
 
 ### `systemctl`
 
