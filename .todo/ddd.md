@@ -28,3 +28,14 @@ https://jimmybogard.com/life-beyond-distributed-transactions-sagas/
 https://www.zuehlke.com/en/insights/design-failure-distributed-transactions-microservices
 
 https://developer.ibm.com/depmodels/microservices/articles/use-saga-to-solve-distributed-transaction-management-problems-in-a-microservices-architecture/
+
+
+Modelling Long Running Processes: Choreography versus Orchestration
+http://www.simpleorientedarchitecture.com/modelling-long-running-processes-choreography-versus-orchestration/
+
+Storing the state of a Long Running Process
+https://www.simpleorientedarchitecture.com/
+storing-the-state-of-a-long-running-process/
+
+Handling Failure in Long Running Processes
+https://www.simpleorientedarchitecture.com/handling-failure-in-long-running-processes/
