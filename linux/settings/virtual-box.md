@@ -116,3 +116,6 @@ phoronix-test-suite --version
 ### 3
 
 sudo apt install sysbench
+sysbench --test=cpu run
+sysbench --test=memory run
+sysbench --test=fileio --file-test-mode=seqwr run
