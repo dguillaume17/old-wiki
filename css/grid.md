@@ -1,5 +1,6 @@
 # Grid Layout
 
+```html
 <style type="text/css">
   .container {
     display: grid;
@@ -55,3 +56,5 @@
   <div class="five">Cinq</div>
   <div class="six">Six</div>
 </div>
+```
+
