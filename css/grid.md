@@ -1,6 +1,6 @@
 # Grid Layout
 
-<style>
+<style type="text/css">
   .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
