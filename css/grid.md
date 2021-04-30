@@ -48,7 +48,7 @@
 </style>
 
 <div class="container">
-  <div class="one">Un</div>
+  <div class="one"><b>Un</b></div>
   <div class="two">Deux</div>
   <div class="three">Trois</div>
   <div class="four">Quatre</div>
