@@ -39,3 +39,6 @@ storing-the-state-of-a-long-running-process/
 
 Handling Failure in Long Running Processes
 https://www.simpleorientedarchitecture.com/handling-failure-in-long-running-processes/
+
+Clean Architecture
+    https://khalilstemmler.com/articles/typescript-domain-driven-design/chain-business-logic-domain-events/

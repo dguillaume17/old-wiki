@@ -9,6 +9,7 @@
 * fromEvent()
 * timer()
 * iif()
+* combineLatest()
 
 ## Opérateurs
 
