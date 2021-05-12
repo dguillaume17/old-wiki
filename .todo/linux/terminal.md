@@ -1,5 +1,7 @@
 # Linux | Commandes
 
+netstat -anop
+
 ## Symboles
 
 ### `.`
