@@ -4,9 +4,17 @@
 
 1.
 
+    MacOS Big Sur
+
     /Applications/VirtualBox.app/Contents/Resources
     Clique droit sur le fichier VirtualBoxVM.app et ouvrir "Get Info"
     Cocher "Open in Low Resolution"
+
+    MacOS Montery
+
+    sudo vim /Applications/VirtualBox.app/Contents/Resources/VirtualBoxVM.app/Contents/Info.plist
+    <key>NSHighResolutionCapable</key>          <false/>
+
 
 2. Dans les Settings de VirtualBox
 
