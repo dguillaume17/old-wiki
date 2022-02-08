@@ -9,7 +9,7 @@
 ## Créer tableau à partir de plusieurs colonnes non adjacentes
 
 ``` excel
-=CHOOSE(TRANSPOSE({1;2;3}); A1#; C1#; E1#)
+=CHOOSE({1\2\3}; A1#; C1#; E1#)
 ```
 
 ## Créer un tableau constant de plusieurs colonnes
@@ -40,4 +40,10 @@
 
 ``` excel
 =--A1:A10
+```
+
+## Convertir un tableau en séquence
+
+``` excel
+SEQUENCE(ROWS(array))
 ```
