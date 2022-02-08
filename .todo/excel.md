@@ -12,6 +12,18 @@
 =CHOOSE(TRANSPOSE({1;2;3}); A1#; C1#; E1#)
 ```
 
+## Créer un tableau constant de plusieurs colonnes
+
+``` excel
+={1\2\3}
+```
+
+## Créer un tableau constant de plusieurs lignes
+
+``` excel
+={1;2;3}
+```
+
 ## Retourner la colonne `n` d'un tableau
 
 ``` excel
