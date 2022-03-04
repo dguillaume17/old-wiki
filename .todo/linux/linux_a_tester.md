@@ -76,6 +76,9 @@ Comment fonctionnent les ACLs?
 
         A chaque fois qu'on crée un fichier ou un répertoire, l'utilisateur de la permission sera d'office l'utilisateur avec lequel le fichier ou le répertoire  a été créé
 
+    Quand on déplace un fichier, les acls du fichier d'origine sont gardés
+    Quand on copie un fichier, de nouveaux acls sont appliqués sur base du dossier de destination
+
 Rechercher un mot dans tous les fichiers d'un dossier/sous-dossier
 
     grep -R mot /etc/*
@@ -89,3 +92,6 @@ Permissions
     sur répertoire
         ll / ls -> doit avoir rx
         cd -> doit avoir r
+
+    x = eXplore sur les dossiers
+    x = eXecution sur les fichiers
