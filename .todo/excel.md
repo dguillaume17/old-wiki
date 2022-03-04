@@ -70,3 +70,9 @@ vecteur;criteres/criteres;
 MMULT(--matrice;--vecteur)>0
 )
 ```
+
+## Convertir un nombre décimal en binaire
+
+``` excel
+=BASE(nombre;2)
+```
