@@ -33,7 +33,7 @@
 ## Convertir un tableau de number en un tableau de boolean
 
 ``` excel
-=ISNUMBER(A1:A10)
+=A1:A10>0
 ```
 
 ## Convertir un tableau de boolean en un tableau de number
@@ -46,4 +46,27 @@
 
 ``` excel
 SEQUENCE(ROWS(array))
+```
+
+## Créer un tableau de x.y rempli avec la valeur 1
+
+``` excel
+=RANDARRAY(x;y;1;1)
+```
+
+## Multiplier un tableau x.y par un vecteur 1.x donne un vecteur 1.y
+
+Exemple :
+
+- convertir chaque valeur d'un vecteur (données) en TRUE si celle-ci est contenue au moins une fois dans les valeurs d'un autre vecteur (critères)
+- convertir en FALSE dans le cas contraire
+
+``` excel
+=LET(
+données;{50;100;150;200;200;300};
+criteres;{100;200;250};
+matrice;données=TRANSPOSE(criteres);
+vecteur;criteres/criteres;
+MMULT(--matrice;--vecteur)>0
+)
 ```
