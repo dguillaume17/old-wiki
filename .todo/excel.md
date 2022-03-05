@@ -54,21 +54,44 @@ SEQUENCE(ROWS(array))
 =RANDARRAY(x;y;1;1)
 ```
 
-## Multiplier un tableau x.y par un vecteur 1.x donne un vecteur 1.y
-
-Exemple :
-
-- convertir chaque valeur d'un vecteur (données) en TRUE si celle-ci est contenue au moins une fois dans les valeurs d'un autre vecteur (critères)
-- convertir en FALSE dans le cas contraire
+## Inverser l'ordre d'un vecteur
 
 ``` excel
 =LET(
-données;{50;100;150;200;200;300};
-criteres;{100;200;250};
-matrice;données=TRANSPOSE(criteres);
-vecteur;criteres/criteres;
-MMULT(--matrice;--vecteur)>0
+vector;{10;20;30;40;50};
+reverseVector;INDEX(vector;SEQUENCE(ROWS(vector);;ROWS(vector);-1));
+reverseVector
 )
+```
+
+## Multiplier un tableau x.y par un vecteur 1.x donne un vecteur 1.y
+
+Exemple :
+    Pour un vecteur de valeurs `values` et pour un 2 vecteurs de critères (valeurs min `minCriterias` et valeurs max `maxCriterias`), retourner respectivement le numéro du premier critère trouvé et le numéro du deuxième critère trouvé pour chaque valeur
+
+``` excel
+=LET(
+values;{150;250;350;450;550;650};
+minCriterias;{100;300;100;500};
+maxCriterias;{200;400;600;600};
+
+criteriasCount;ROWS(minCriterias);
+reverseSequenceCriterias;SEQUENCE(criteriasCount;;criteriasCount;-1);
+reverseMinCriterias;INDEX(minCriterias;reverseSequenceCriterias);
+reverseMaxCriterias;INDEX(maxCriterias;reverseSequenceCriterias);
+transposeReverseMinCriterias;TRANSPOSE(reverseMinCriterias);
+transposeReverseMaxCriterias;TRANSPOSE(reverseMaxCriterias);
+reverseCriteriasPerValue;(values>=transposeReverseMinCriterias)*(values<=transposeReverseMaxCriterias);
+reverseBinaryCriteriasPerValue;MMULT(reverseCriteriasPerValue;2^(SEQUENCE(criteriasCount)-1));
+reverseFirstBinaryCriteriaPerValue;reverseBinaryCriteriasPerValue;
+reverseFirstCriteriaPerValue;FLOOR.MATH(LOG(reverseFirstBinaryCriteriaPerValue;2));
+firstCriteriaPerValue;IFERROR(criteriasCount-reverseFirstCriteriaPerValue;0);
+reverseSecondBinaryCriteriaPerValue;reverseFirstBinaryCriteriaPerValue-(2^reverseFirstCriteriaPerValue);
+reverseSecondCriteriaPerValue;FLOOR.MATH(LOG(reverseSecondBinaryCriteriaPerValue;2));
+secondCriteriaPerValue;IFERROR(criteriasCount-reverseSecondCriteriaPerValue;0);
+CHOOSE({1\2};firstCriteriaPerValue;secondCriteriaPerValue)
+)
+
 ```
 
 ## Convertir un nombre décimal en binaire
