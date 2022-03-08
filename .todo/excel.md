@@ -100,8 +100,37 @@ CHOOSE({1\2};firstCriteriaPerValue;secondCriteriaPerValue)
 
 ```
 
+``` excel
+=LET(
+values;{150;250;350;450;550;650};
+minCriterias;{100;300;100;500};
+maxCriterias;{200;400;600;600};
+
+criteriasCount;ROWS(minCriterias);
+sequenceCriterias;SEQUENCE(criteriasCount);
+foundCriteriasPerValueFn;LAMBDA(foundCriteriaIndex;BYROW(values;LAMBDA(value;IFERROR(INDEX(FILTER(sequenceCriterias;(value>=minCriterias)*(value<=maxCriterias);0);foundCriteriaIndex);0))));
+firstCriteriaPerValue;foundCriteriasPerValueFn(1);
+secondCriteriaPerValue;foundCriteriasPerValueFn(2);
+CHOOSE({1\2};firstCriteriaPerValue;secondCriteriaPerValue)
+)
+```
+
 ## Convertir un nombre décimal en binaire
 
 ``` excel
 =BASE(nombre;2)
+```
+
+## Concaténer 1 titre avec 1 dynamic array
+
+``` excel
+=LET(
+rowCount;ROWS(AM11:AM13);
+sequenceTitleAndRow;SEQUENCE(rowCount+1;;0);
+IF(sequenceTitleAndRow=0;"Titre";INDEX(AM11:AM13;sequenceTitleAndRow))
+)
+```
+
+``` excel
+=IFERROR(INDEX(AM11:AM13;SEQUENCE(ROWS(AM11:AM13)+1));"Titre")
 ```

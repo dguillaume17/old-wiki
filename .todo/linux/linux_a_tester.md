@@ -95,3 +95,14 @@ Permissions
 
     x = eXplore sur les dossiers
     x = eXecution sur les fichiers
+
+Pattern
+    https://www.linuxjournal.com/content/pattern-matching-bash
+
+Find avec pattern
+    find . -name "*680*"  -type d
+    find . -path "*/customer-680/*"  -type d
+
+Obtenir la taille en Go de tous les fichiers contenus dans les répertoires et sous-répertoires en utilisant un pattern
+
+    find . -path "*/customer-680/*"  -type d -exec du -b {} \; | awk '{print $1}' | awk '{s+=$1} END {print s}' | awk '{print $1/1024/1024/1024}'
