@@ -12,16 +12,22 @@
 =CHOOSE({1\2\3}; A1#; C1#; E1#)
 ```
 
+## Créer un tableau constant de plusieurs lignes
+
+``` excel
+={1;2;3}
+```
+
 ## Créer un tableau constant de plusieurs colonnes
 
 ``` excel
 ={1\2\3}
 ```
 
-## Créer un tableau constant de plusieurs lignes
+## Créer un tableau constant de plusieurs lignes et colonnes
 
 ``` excel
-={1;2;3}
+={"Colonne1.Ligne1"\"Colonne2.Ligne1";"Colonne1.Ligne2"\"Colonne2.Ligne2"}
 ```
 
 ## Retourner la colonne `n` d'un tableau
