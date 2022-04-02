@@ -134,3 +134,23 @@ IF(sequenceTitleAndRow=0;"Titre";INDEX(AM11:AM13;sequenceTitleAndRow))
 ``` excel
 =IFERROR(INDEX(AM11:AM13;SEQUENCE(ROWS(AM11:AM13)+1));"Titre")
 ```
+
+
+## Comment exécuter une macro qui affiche le temps de calcul d'un WorkBook
+
+Sub Performance()
+
+    Time1 = Timer
+    
+    Columns("A:A").Select
+    Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    
+    Columns("A:A").Select
+    Selection.Delete
+    
+    Time2 = Timer
+    CalculationTime = Time2 - Time1
+    
+    MsgBox "Temps d'exécution : " & (CalculationTime * 1000) & " ms."
+
+End Sub

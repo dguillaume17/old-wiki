@@ -106,3 +106,25 @@ Find avec pattern
 Obtenir la taille en Go de tous les fichiers contenus dans les répertoires et sous-répertoires en utilisant un pattern
 
     find . -path "*/customer-680/*"  -type d -exec du -b {} \; | awk '{print $1}' | awk '{s+=$1} END {print s}' | awk '{print $1/1024/1024/1024}'
+
+Comment imprimer la timezone du système ?
+
+    timedatectl
+
+    or
+
+    cat /etc/timezone
+
+Comment changer la timezone du système ?
+
+    sudo timedatectl set-timezone Europe/Brussels
+
+Comment lister toutes les timezones disponibles ?
+
+    timedatectl list-timezones
+
+Comment vérifier l'encodage d'un fichier ?
+
+    file fichier.txt
+
+    0.sql: UTF-8 Unicode text, with very long lines, with CRLF, LF line terminators
