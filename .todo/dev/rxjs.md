@@ -32,3 +32,37 @@ Both throttleTime and debounceTime ignore the events which come in the meantime,
 
 
 withLatestFrom
+race()
+
+mergeMap vs switchMap
+    import { interval, take, tap, timer } from 'rxjs';
+    import { mergeMap } from 'rxjs/operators';
+
+    interval(1000)
+    .pipe(
+        take(2),
+        tap(() => console.log('tap source')),
+        mergeMap(() => {
+        return timer(3000).pipe(tap(() => console.log('tap mergeMap')));
+        })
+    )
+    .subscribe(() => {
+        console.log('subscribe');
+    });
+
+
+    import { interval, take, tap, timer } from 'rxjs';
+    import { switchMap } from 'rxjs/operators';
+
+    interval(1000)
+    .pipe(
+        take(2),
+        tap(() => console.log('tap source')),
+        switchMap(() => {
+        return timer(3000).pipe(tap(() => console.log('tap switchMap')));
+        })
+    )
+    .subscribe(() => {
+        console.log('subscribe');
+    });
+

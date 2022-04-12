@@ -154,3 +154,9 @@ Sub Performance()
     MsgBox "Temps d'exécution : " & (CalculationTime * 1000) & " ms."
 
 End Sub
+
+
+XLOOKUP semble être plus performance que INDEX(FILTER(...))
+XLOOKUP en mode binaire permet de faire une recherche dichotomique
+
+Pour des raisons de performance, il vaut mieux écrire une formule qui se base sur une plage de cellules (=helper) plutôt que sur un nom défini dans le Name Manager.
