@@ -16,5 +16,20 @@ ancestor...
     @Input()
     public ancestorValueAccessorStatusDirective?: ValueAccessorStatusDirective;
 
-isMergeable = canBeMerge
+isMergeable = canBeMerged
     isDisplayable = canBeDisplay
+
+mode vs type
+    dataMode / dataType
+
+Comparison
+    bypassStrictUrlComparisonForNextChangeOfRoute
+
+Applicable
+    areRightsApplicable
+
+Computed
+    computedHistory
+
+Valid
+    isValid
