@@ -91,11 +91,11 @@ Comment transormer chaque item d'un tableau en observable et concaténer le tout
 
 from vs of
 
-    from([1, 2, 3]) -> Emet 3 valeurs
-        1 -> 1
-        2 -> 2
-        3 -> 3
-    of([1, 2, 3]); -> Emet une valeur = [1, 2, 3]
+    from([10, 20, 30]) -> Emet 3 valeurs
+        Valeur 1 -> 10
+        Valeur 2 -> 20
+        Valeur 3 -> 30
+    of([10, 20, 30]); -> Emet une valeur = [10, 20, 30]
 
 Comment émettre une valeur par défaut?
 

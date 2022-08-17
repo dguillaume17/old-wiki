@@ -38,3 +38,50 @@ Comment injecter Renderer2 dans un service?
             const renderer = this.rendererFactory2.createRenderer(null, null);
         }
     }
+
+Comment injecter un ViewContainerRef?
+
+    @Directive({ selector: '[componentToInject]' })
+    export class ComponentToInjectDirective implements OnChanges {
+
+        // Implicit inputs
+
+        @Input()
+        public componentToInject: boolean;
+
+        // Private properties
+
+        private _isComponentAlreadyInjected: boolean;
+
+        // Lifecycle
+
+        constructor(
+            @Self()
+            private _template: TemplateRef<any>,
+            private _vcr: ViewContainerRef
+        ) { }
+
+        ngOnChanges(changes: SimpleChanges) {
+            if (!this._isComponentAlreadyInjected && changes.componentToInject.currentValue === true) {
+                this._vcr.createEmbeddedView(this._template);
+                this._isComponentAlreadyInjected = true;
+            }
+        }
+
+    }
+
+Read Token in ContentChild
+
+    https://www.tektutorialshub.com/angular/contentchild-and-contentchildren-in-angular/
+
+
+    
+    For Example, consider the following projected content. The nameInput can be either a input element or a ngModel directive.
+        <input #nameInput [(ngModel)]="name">
+
+    @ContentChild('nameInput',{static:false}) nameVar; // Default read is ElementRef
+    @ContentChild('nameInput',{static:false, read: NgModel}) nameVarAsNgModel;
+    @ContentChild('nameInput',{static:false, read: ElementRef}) nameVarAsElementRef;
+    @ContentChild('nameInput', {static:false, read: ViewContainerRef }) nameVarAsViewContainerRef;
+ 
+ 
