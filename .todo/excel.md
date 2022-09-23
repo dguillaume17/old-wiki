@@ -160,3 +160,9 @@ XLOOKUP semble être plus performance que INDEX(FILTER(...))
 XLOOKUP en mode binaire permet de faire une recherche dichotomique
 
 Pour des raisons de performance, il vaut mieux écrire une formule qui se base sur une plage de cellules (=helper) plutôt que sur un nom défini dans le Name Manager.
+
+## Comment faire pour qu'une fonction ne retourne pas la valeur "0" quand la cellule de base vaut ""
+
+``` excel
+=""&A1
+```

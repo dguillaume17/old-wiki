@@ -33,3 +33,11 @@ Computed
 
 Valid
     isValid
+
+Associated
+    isAssociatedModuleDisallowUsage
+
+Disallow
+    isAssociatedModuleDisallowUsage
+
+Visually
